@@ -27,27 +27,33 @@
 
 ## 快速开始
 
-### macOS
+**三步搞定，不用敲命令。** 下载本仓库并解压，然后按你的系统选一行：
 
-1. 下载本仓库（或 `git clone https://github.com/Arongjun/devin-desktop-zh-suite.git`）。
-2. 双击根目录的 **`汉化-Mac.command`**（需要 Python 3；没有会提示安装）。
-3. 完全退出 Devin 并重新打开。
-4. 命令面板执行 **`Configure Display Language`** → 选择 **`中文(简体)`**。
-5. 新开一个会话，中文思考规则生效。
+| 平台 | ① 双击运行 | ② 重启 Devin | ③ 切换语言 |
+|:---:|:---:|:---:|:---:|
+| **Windows** | `一键汉化.bat` | 完全退出后重新打开 | 命令面板 → `Configure Display Language` → `中文(简体)` |
+| **macOS** | `汉化-Mac.command` | 完全退出后重新打开 | 命令面板 → `Configure Display Language` → `中文(简体)` |
 
-> ⚠️ **不要双击 Windows 的 `一键汉化.bat`**。macOS 不会执行 `.bat`，只会用编辑器把它当文本打开。
+第 ③ 步完成后**新开一个会话**，中文思考规则自动生效。
 
-### Windows
+> **macOS 注意**：需要 Python 3（没有会提示安装）。**不要双击 Windows 的 `.bat`** —— macOS 不会执行，只会用编辑器当文本打开，这正是很多人以为「脚本没反应」的原因。
 
-1. 下载本仓库并解压。
-2. 双击根目录的 **`一键汉化.bat`**（使用系统自带 PowerShell）。
-3. 完全退出 Devin 并重新打开。
-4. 命令面板执行 **`Configure Display Language`** → 选择 **`中文(简体)`**。
+<!-- 截图位：把汉化后的主界面截图保存为 docs/screenshots/main-ui.png，然后取消下方一行的注释即可在 README 展示效果预览：
+![汉化效果预览](docs/screenshots/main-ui.png)
+-->
 
-自动探测失败时可手动指定目录：
+### 自动探测失败？手动指定目录
+
+脚本会尝试自动定位 Devin 安装目录；若失败，手动指定即可：
 
 ```powershell
+# Windows
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\apply-zh.ps1 -AssetsDir "D:\...\devin-webapp-host\assets"
+```
+
+```bash
+# macOS / Linux
+python3 scripts/devin_zh.py apply --app-dir /Applications/Devin.app
 ```
 
 ---
@@ -114,7 +120,7 @@ python3 scripts/devin_zh.py rules remove
 ## 目录结构
 
 ```
-devin-zh-kit/
+devin-desktop-zh-suite/
 ├── 一键汉化.bat              # Windows 入口
 ├── 还原英文.bat              # Windows 还原
 ├── 汉化-Mac.command          # macOS 入口
